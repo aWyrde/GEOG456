@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<script src="myDataAsJS.js"></script>
+<body>
+
+<h2>US Metropolitan Statistical Area, 2010 Population Change (Numerical)</h2>
+
+<table id="mytable">  
+  <tr>
+    <th>Metro Area</th>
+    <th>Population Change</th>
+  </tr>
+</table>
+
+</body>
+<script>
+    var x = document.getElementById('mytable')
+    
+    for (var i = 0; i<myData.length; i++){
+        var myNewRow = document.createElement('tr');
+        var myNewCell1 = document.createElement('td');
+        var myNewCell2 = document.createElement('td');
+
+        myNewCell1.innerText = myData[i].NAME;
+        myNewCell2.innerText = myData[i].NPOPCHG2010;
+
+        myNewRow.append(myNewCell1)
+        myNewRow.append(myNewCell2)
+        x.append(myNewRow)       
+
+    } //end of loop
+</script>
+</html>
