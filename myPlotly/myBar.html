@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke's HTML Bar Graph</title>
+</head>
+<style>
+    #myDiv {
+        width: 1400px;
+        height: 650px;
+        background-color: blue;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.14.0/plotly.min.js" integrity="sha512-XDnqTWsAcVl16AYJoBHumISzIYThowGjR67jeL53NSp6tajsq2qf5UeAWvk1n6Hp3M2iMsV/ewhPScBiLCDs9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="myDataAsJS.js"></script>
+<body>
+    <div id="myDiv">
+    </div>
+    <script>
+        var y = myData.map(e => e.NPOPCHG2010)
+        var x = myData.map(e => e.NAME) 
+        // var newY = [];
+        // for (var i = 0; i < x.length; i++){
+        // newY.push(40)
+        // }
+    var trace1 = {
+
+        x: x,
+      
+        y: y,
+      
+        mode: 'markers',
+      
+        type: 'bar',
+        marker:{
+            color: y, colorscale: 'Thermal'
+        }
+      }; 
+      var layout={
+        title:{
+            text: 'US Metropolitan Areas <br> 2010 Population Change (Numerical)'
+        },
+        xaxis:{
+            title: {
+                text: 'Metro Areas'
+            }
+        },
+        yaxis:{
+            title: {
+                text: 'Numerical Gain/Loss'
+            }
+        }
+      }
+
+
+var data = [trace1]
+      
+      
+      Plotly.newPlot('myDiv', data, layout);
+      </script>
+</body>
+</html>
