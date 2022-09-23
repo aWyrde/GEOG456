@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke's Leaf Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+    <script src="MetroArea_PopStats.js"></script>
+</head>
+    <style>
+        #map {
+            width:100%;
+            height: 500px;
+        }
+    </style>
+
+    <body>
+    <br>
+        <h3 id="daYear"></h3>
+        <input type="range" name="year" min="0" max="9" oninput="moveSlider(this.value)">
+        <button onclick='geojson.setStyle({color:getRandomColor()})'>Click me!</button>
+        <div id="map"></div>
+
+        
+
+    <script>
+        // Example from class to convert properties of columns into an array; 
+            //var year = ["2010", "2011"..."2019"]; myGeo.year[i].[month[i]]
+
+        var year = ["NPOPCHANGE2010", "NPOPCHANGE2011", "NPOPCHANGE2012", "NPOPCHANGE2013", "NPOPCHANGE2014", "NPOPCHANGE2015", "NPOPCHANGE2016", "NPOPCHANGE2017", "NPOPCHANGE2018", "NPOPCHANGE2019"] 
+        //myDATA.year[i].["maxValue"] 
+        //myDATA.year[1].[maxValue]    <=???
+                //how to call maximum value from a column?
+
+
+
+
+        var map = L.map('map').setView([40, -80], 5);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        }).addTo(map);
+
+        var myStyle = {
+            "color": "#ff7800",
+            "weight": .5,
+            "opacity": 0.65
+                
+        };
+
+
+
+
+        var geojson = L.geoJSON(myDATA, {style: myStyle}).addTo(map);
+
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+            }
+
+        function movesSlider(e) {
+
+        }
+
+    </script>
+
+
+
+
+    </body>
